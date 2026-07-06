@@ -200,4 +200,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    /* ==========================================================================
+       8. Project Filter Implementation
+       ========================================================================== */
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.classList.remove('hide');
+                } else {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (cardCategory === filterValue) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                }
+            });
+        });
+    });
+
+
+    /* ==========================================================================
+       9. GitHub Heatmap Grid Generator
+       ========================================================================== */
+    const heatmapGrid = document.getElementById('github-heatmap-grid');
+    if (heatmapGrid) {
+        const weeks = 53;
+        const days = 7;
+        
+        // Match user screenshot exactly:
+        // July to January (weeks 0 to 28 approx): mostly sparse (level 0, very rare 1 or 2)
+        // February to June (weeks 29 to 52 approx): extremely dense blocks (level 2 and 3 mostly, some 1)
+        for (let w = 0; w < weeks; w++) {
+            const column = document.createElement('div');
+            column.className = 'heatmap-column';
+            
+            const isDensePeriod = w >= 29; // Feb (week 29 onwards) is extremely dense
+            
+            for (let d = 0; d < days; d++) {
+                const cell = document.createElement('div');
+                cell.className = 'heatmap-cell';
+                
+                let level = 0;
+                const rand = Math.random();
+                
+                if (isDensePeriod) {
+                    if (rand < 0.1) {
+                        level = 0;
+                    } else if (rand < 0.3) {
+                        level = 1;
+                    } else if (rand < 0.7) {
+                        level = 2;
+                    } else {
+                        level = 3;
+                    }
+                } else {
+                    if (rand < 0.93) {
+                        level = 0;
+                    } else if (rand < 0.98) {
+                        level = 1;
+                    } else {
+                        level = 2;
+                    }
+                }
+                
+                cell.classList.add(`level-${level}`);
+                
+                let dateStr = "Contribution";
+                if (level > 0) {
+                    dateStr = `${level * 2 + Math.floor(Math.random() * 2)} contributions`;
+                } else {
+                    dateStr = "No contributions";
+                }
+                cell.setAttribute('title', dateStr);
+                
+                column.appendChild(cell);
+            }
+            heatmapGrid.appendChild(column);
+        }
+    }
+
 });
