@@ -124,43 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* ==========================================================================
-       5. Contact Form Submission Handling
-       ========================================================================== */
-    const contactForm = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('btn-submit');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const message = document.getElementById('form-message').value.trim();
-
-            if (!name || !email || !message) {
-                showToast("Please complete all fields.");
-                return;
-            }
-
-            // Disable submit button and show loading state
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<span>Sending...</span>';
-                
-                // Mock network delay (1.0s)
-                setTimeout(() => {
-                    showToast("Message sent successfully! I will get in touch shortly.");
-                    contactForm.reset();
-                    
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                }, 1000);
-            }
-        });
-    }
-
 
     /* ==========================================================================
        6. Back to Top Button Dynamics
