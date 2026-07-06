@@ -527,25 +527,51 @@ section:nth-of-type(even) {
 }
 
 .project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: #0f172a; /* Sleek dark Slate 900 background */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     padding: 2.2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle mouse tracking spotlight effect background */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(99, 102, 241, 0.06), transparent 40%);
+    pointer-events: none;
+    transition: opacity 0.5s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--card-shadow-hover);
-    border-color: #cbd5e1;
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.35); /* Glow indigo border on hover */
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.1);
+}
+
+.project-card.hardware-card::before {
+    background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(245, 158, 11, 0.05), transparent 40%);
+}
+
+.project-card.hardware-card:hover {
+    border-color: rgba(245, 158, 11, 0.35); /* Amber/orange glow border on hover */
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 158, 11, 0.1);
 }
 
 .project-card-header {
     margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .project-tags {
@@ -563,39 +589,39 @@ section:nth-of-type(even) {
 }
 
 .badge-live {
-    background: #ecfdf5;
-    color: #047857;
-    border: 1px solid #a7f3d0;
+    background: rgba(16, 185, 129, 0.1);
+    color: #34d399; /* Bright Emerald */
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .badge-founder {
-    background: #f5f3ff;
-    color: #6d28d9;
-    border: 1px solid #ddd6fe;
+    background: rgba(139, 92, 246, 0.1);
+    color: #a78bfa; /* Bright Violet */
+    border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .badge-hardware {
-    background: #eff6ff;
-    color: #1d4ed8;
-    border: 1px solid #bfdbfe;
+    background: rgba(245, 158, 11, 0.1);
+    color: #fbbf24; /* Bright Amber */
+    border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 .project-period {
     font-size: 0.78rem;
-    color: var(--text-muted);
+    color: #94a3b8; /* Slate 400 */
 }
 
 .project-title {
     font-size: 1.45rem;
     font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 0.2rem;
+    color: #ffffff; /* Pure white title */
+    margin-bottom: 0.25rem;
     letter-spacing: -0.3px;
 }
 
 .project-subtitle {
     font-size: 0.88rem;
-    color: var(--text-secondary);
+    color: #cbd5e1; /* Slate 300 */
     font-weight: 500;
 }
 
@@ -604,16 +630,18 @@ section:nth-of-type(even) {
     flex-wrap: wrap;
     gap: 0.4rem;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .tech-tag {
     font-size: 0.72rem;
     font-weight: 500;
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0; /* Slate 200 */
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-details {
@@ -622,11 +650,13 @@ section:nth-of-type(even) {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    position: relative;
+    z-index: 2;
 }
 
 .project-details li {
     font-size: 0.92rem;
-    color: var(--text-secondary);
+    color: #cbd5e1; /* Slate 300 text */
     position: relative;
     padding-left: 1.1rem;
     line-height: 1.5;
@@ -634,11 +664,20 @@ section:nth-of-type(even) {
 
 .project-details li::before {
     content: '•';
-    color: var(--accent-color);
+    color: #818cf8; /* Indigo 400 bullet pointer */
     position: absolute;
     left: 0;
     top: 0;
     font-weight: 700;
+}
+
+.project-card.hardware-card .project-details li::before {
+    color: #fbbf24; /* Amber bullet for hardware details */
+}
+
+.project-footer {
+    position: relative;
+    z-index: 2;
 }
 
 .project-link {
@@ -646,14 +685,22 @@ section:nth-of-type(even) {
     align-items: center;
     gap: 0.4rem;
     font-size: 0.85rem;
-    color: var(--accent-color);
+    color: #818cf8; /* Indigo link */
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition-smooth);
 }
 
+.project-card.hardware-card .project-link {
+    color: #fbbf24; /* Amber link for hardware project */
+}
+
 .project-link:hover {
-    color: var(--accent-dark);
+    color: #a5b4fc;
+}
+
+.project-card.hardware-card .project-link:hover {
+    color: #fde047;
 }
 
 .project-link svg {
