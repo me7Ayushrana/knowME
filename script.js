@@ -255,19 +255,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rand = Math.random();
                 
                 if (isDensePeriod) {
-                    if (rand < 0.1) {
+                    if (rand < 0.05) {
                         level = 0;
-                    } else if (rand < 0.3) {
+                    } else if (rand < 0.20) {
                         level = 1;
-                    } else if (rand < 0.7) {
+                    } else if (rand < 0.60) {
                         level = 2;
                     } else {
                         level = 3;
                     }
                 } else {
-                    if (rand < 0.93) {
+                    if (rand < 0.90) {
                         level = 0;
-                    } else if (rand < 0.98) {
+                    } else if (rand < 0.97) {
                         level = 1;
                     } else {
                         level = 2;

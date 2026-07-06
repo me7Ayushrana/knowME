@@ -1401,7 +1401,7 @@ section:nth-of-type(even) {
 }
 
 .segment-ts { background-color: var(--accent-color); }
-.segment-cpp { background-color: #10b981; } /* Emerald C++ */
+.segment-java { background-color: #10b981; } /* Emerald Java */
 .segment-js { background-color: #f59e0b; }  /* Amber JS */
 .segment-py { background-color: var(--accent-secondary); } /* Sky Python */
 .segment-html { background-color: #ec4899; } /* Pink HTML */
@@ -1425,7 +1425,7 @@ section:nth-of-type(even) {
 }
 
 .dot-ts { background-color: var(--accent-color); }
-.dot-cpp { background-color: #10b981; }
+.dot-java { background-color: #10b981; }
 .dot-js { background-color: #f59e0b; }
 .dot-py { background-color: var(--accent-secondary); }
 .dot-html { background-color: #ec4899; }
