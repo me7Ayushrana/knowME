@@ -470,53 +470,72 @@ section:nth-of-type(even) {
 }
 
 .skill-category-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: #0f172a; /* Sleek dark Slate 900 background */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     padding: 1.8rem;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle mouse tracking spotlight effect background */
+.skill-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(99, 102, 241, 0.06), transparent 40%);
+    pointer-events: none;
+    transition: opacity 0.5s ease;
 }
 
 .skill-category-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--card-shadow-hover);
-    border-color: #cbd5e1;
+    border-color: rgba(99, 102, 241, 0.35); /* Glow indigo border on hover */
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.1);
 }
 
 .category-header {
     margin-bottom: 1.2rem;
-    border-bottom: 1px solid var(--bg-tertiary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 0.8rem;
+    position: relative;
+    z-index: 2;
 }
 
 .category-header h3 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff; /* Pure white category title */
 }
 
 .skills-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .badge {
     font-size: 0.78rem;
     font-weight: 500;
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0; /* Slate 200 */
     padding: 0.3rem 0.65rem;
     border-radius: 6px;
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: var(--transition-smooth);
 }
 
 .badge:hover {
-    background-color: #e0e7ff;
-    color: var(--accent-color);
-    border-color: #c7d2fe;
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc; /* Light indigo text on hover */
+    border-color: rgba(99, 102, 241, 0.35);
 }
 
 /* --- Projects Section --- */

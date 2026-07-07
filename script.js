@@ -254,10 +254,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       10. Project Cards Spotlight Effect
+       10. Spotlight Effect (Project & Skill Cards)
        ========================================================================== */
-    const cardsList = document.querySelectorAll('.project-card');
-    cardsList.forEach(card => {
+    const spotlightCards = document.querySelectorAll('.project-card, .skill-category-card');
+    spotlightCards.forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
